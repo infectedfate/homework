@@ -8,7 +8,9 @@ class ImitateArray
 
   def im_select
     arr.each do |i|
-      puts i if (i % 2) == 0
+      selected_elements = []
+      selected_elements << i if (i % 2) == 0
+      selected_elements
     end
   end
 
