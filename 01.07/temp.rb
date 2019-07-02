@@ -1,7 +1,7 @@
 print "Введите температуру и шкалу (C или K):"
 str = gets
-exit if str.nil? or str.empty?
 str.chomp!
+exit if str.nil? || str.empty?
 temp, scale = str.split(" ")
 
 temp = temp.to_f
