@@ -7,7 +7,9 @@ class ImitateArray
   end
 
   def im_select
-
+    arr.each do |i|
+      puts i if (i % 2) == 0
+    end
   end
 
   def im_count(element)
@@ -34,11 +36,24 @@ class ImitateArray
   end
 
   def im_flatten
-
+    result = []
+    arr.each do |i|
+      if i.is_a?(Array)
+        i.each do |t|
+          result << t
+        end
+      else
+        result << i
+      end
+    end
+    result
   end
 
   def im_reverse
-    
+    array_result = []
+    arr.each do |i|
+      array_result.unshift(i)
+    end
+    array_result
   end
-    
 end
