@@ -16,6 +16,7 @@ class Array
       yield(self[i])
       i += 1
     end
+    self
   end
 
 end
@@ -30,13 +31,13 @@ class Yield
 
   def my_find
     arr.my_each do |el|
-      return el if yield(el) == true
+      return el if yield(el)
     end
   end
 
   def my_select
     arr.my_map do |el| 
-      el if yield(el) == true 
+      el if yield(el)
     end.compact
   end
 
