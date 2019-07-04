@@ -55,6 +55,7 @@ end
 
 arr1 = Yield.new([1,4,4,4,5,5,5,55,3,5,6,8])
 
+p arr1.my_find { |i| 4 }
 p arr1.my_find { |i| i % 5 == 0 }
 p arr1.my_count { |i| i == 5 }
 p arr1.my_select { |i| i == 2 }
