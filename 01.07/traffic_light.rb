@@ -1,15 +1,6 @@
-puts "Введите цвет"
-color = gets.chomp!
-if !color.empty?
-  if color == "красный"
-    puts "Стоп"
-  elsif color == "желтый"
-    puts "Внимание"
-  elsif color == "зеленый"
-    puts "Поехали"
-  else
-    puts "Введено неверное значение"
-  end
-else
-  puts "Вы ничего не ввели"
-end
+traffic_light = {'красный' => 'Стоп', 'желтый' => 'Внимание', "зеленый" => 'Поехали'}
+
+
+puts "Введите цвет:"
+input = gets.chomp.downcase.to_s
+puts traffic_light[input]
