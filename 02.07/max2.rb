@@ -1,8 +1,8 @@
-arr = [1,3,5,76,4,3,26,6,7,8,98,7,7,6,5,2]
+arr = [1,1,1,76,4,3,26,6,7,8,98,7,7,6,5,2]
 
 def max_2(arr)
   max_num1 = arr[0]
-  max_num2 = arr[0]
+  max_num2 = arr[1]
   arr.each do |el|
     if el > max_num1
       max_num1 = el
@@ -17,4 +17,6 @@ def max_2(arr)
   puts max_num2
 end
 
-max_2(arr)
+max_2(arr = [1,1,1,76,4,3,26,6,7,8,98,7,7,6,5,2])
+puts "------"
+max_2(arr = [1,1,1,76,1,3,26,6,6,2])
