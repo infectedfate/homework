@@ -1,3 +1,5 @@
+#Подсчет слов и строк в файле
+
 text=''
 line_count = 0
 lines = File.readlines("text.txt", "rb")
