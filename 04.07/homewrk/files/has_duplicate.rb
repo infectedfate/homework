@@ -1,6 +1,6 @@
 #Возвращает true если есть хотя бы 2 повторяющихся значения
 
-def duplicate(document)
+def has_duplicate?(document)
   file = File.open(document, "r") do |f|
     while f.eof?
       string = f.read(20)
