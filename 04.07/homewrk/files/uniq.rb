@@ -1,11 +1,9 @@
-file = File.open('numbers.txt', "r")
-data = file.read
-file.close
-data = data.split(" ")
-uniq_arr = []
-data.map do |el|
-  if !uniq_arr.include?(el)
-    uniq_arr << el
-  end
+def uniq(array)
+  uniq = {}
+  array.each do |el|
+    uniq[el] = nil
+  end  
+  uniq.keys
+  File.write('uniq_numbers.txt', uniq_arr.join(" "))
 end
-File.write('uniq_numbers.txt', uniq_arr.join(" "))
+

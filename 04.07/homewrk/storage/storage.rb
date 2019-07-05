@@ -1,59 +1,15 @@
+require_relative 'menu'
+require_relative 'hash'
+
 class Main
 
   attr_accessor :goods
+  
+  include Menu
+  include MyHash
 
   def initialize
     @goods = []
-  end
-
-  def menu
-    loop do
-      info
-      puts 'Введите пункт меню:'
-      choice = gets.to_i
-
-      case choice
-      when 1 then add_new_good
-      when 2 then delete
-      when 3 then update
-      when 4 then total
-      when 5 then show_all_goods
-      when 6 then show_all_prices
-      when 0 then break
-      end
-    end
-  end
-
-  def info
-    puts '1. Добавить товар'
-    puts '2. Удалить товар'
-    puts '3. Обновить товар'
-    puts '4. Показать сумму стоимости всех товаров'
-    puts '5. Показать все товары'
-    puts '6. Показать все цены'
-    puts '0. Выход'
-  end
-
-  def get(key)
-    arr = @goods.find { |e| e.include?(key) }
-    arr[1]
-  end
-
-  def set(key, value)
-    arr = @goods.find { |e| e.include?(key) }
-    arr[1] = value
-  end
-
-  def keys
-    res = []
-    @goods.each { |e| res << e[1] }
-    return res
-  end
-
-  def values
-    res = []
-    @goods.each { |e| res << e[0] }
-    return res
   end
 
   def delete(value)
