@@ -6,5 +6,4 @@ while i < 10000000
   i += 1
 end
 
-
 File.write('numbers.txt', numbers.join(" "))

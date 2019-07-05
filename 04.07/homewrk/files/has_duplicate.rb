@@ -2,8 +2,10 @@
 
 def duplicate(document)
   file = File.open(document, "r") do |f|
-    string = f.read(200)
-    string = string.split(" ")
-      puts string.combination(2).any? {|el1, el2| el1 == el2 }
+    while f.eof?
+      string = f.read(20)
+      array = string.split(" ")
+      puts array.combination(2).any? {|el1, el2| el1 == el2 }
     end
+  end
 end
