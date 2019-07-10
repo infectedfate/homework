@@ -1,11 +1,15 @@
+require_relative 'interface'
 require_relative 'journal'
 require_relative 'marks'
 
 class Statistic
   attr_accessor :students, :subjects
 
+  include Interface
+
   def initialize
-    @subjects = ["Русский язык", "Математика", "Английский язык", "Окружающий мир", "Программирование"]
+    @buffer = File
+    @subjects = ["russian", "math", "english", "world", "programming"]
     @students = []
     @a_students = []
     @b_students = []
@@ -16,9 +20,11 @@ class Statistic
     journal = Journal.new
     journal.generate_students
     journal.save_in_file
-    marks = Marks.new("Журнал")
+    marks = Marks.new("journal")
     marks.generate_marks
     @students = journal.students
+    perfomance
+    a_b_c
   end
 
   def average(id)
@@ -48,9 +54,8 @@ class Statistic
       @students.each_with_index do |student, idx|
         perf = average(idx)
         perf_hash[student]= perf
-        perf_hash = perf_hash.sort_by(&:last).reverse.  to_h
+        perf_hash = perf_hash.sort_by(&:last).reverse.to_h
       end
-      perf_hash
     end
     File.open("Успеваемость", "wb") do |f|
       perf_hash.each do |k,v|
@@ -62,7 +67,8 @@ class Statistic
   def rating(id)
    file = File.open("Успеваемость", "r")
    string = file.readlines[id-1]
-   string.chomp
+   puts "Строчка в рейтинге - #{id}) #{string.chomp}"
+   puts ""
   end
 
   def show_marks_in_subject(id, subject)
@@ -78,19 +84,19 @@ class Statistic
     mark = ''
     name = ''
     file = File.open("Успеваемость", "r")
-    file.each do |line|
-     string = file.read
+    file.readlines.each do |line|
+     string = line
      array = string.split(" :")
      name = array[0].chomp
      mark = array[1].chomp.to_f
+      if mark > 4.0
+        @a_students << name
+      elsif mark > 3.0 && mark < 4.0
+        @b_students << name
+      else
+        @c_students << name
+      end 
     end
-    if mark > 4.000
-      @a_students << name
-    elsif mark > 3.000 && mark < 4.000
-      @b_students << name
-    else
-      @c_students << name
-    end 
   end
 
   def top_five
@@ -105,6 +111,17 @@ class Statistic
     puts five
   end
 
+  def overall
+    @a_students = []
+    @b_students = [] 
+    @c_students = []
+    a_b_c
+    puts "Отличники всего: #{@a_students.length}"
+    puts "Хорошисты всего: #{@b_students.length}"
+    puts "Троечники всего: #{@c_students.length}"
+    puts 
+  end
+
   def gender?(id)
     last_letter_of_surname = @students[id+1].split(" ")[0]
     if last_letter_of_surname[last_letter_of_surname.length - 1] == "a"
@@ -113,4 +130,7 @@ class Statistic
       :male
     end
   end
+
+  Statistic.new.init
+  Statistic.new.run
 end
