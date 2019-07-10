@@ -4,7 +4,7 @@ class Marks
 
   def initialize(file)
     @file = file
-    @subjects = ["Русский язык", "Математика", "Английский язык", "Окружающий мир", "Программирование"]
+    @subjects = ["russian", "math", "english", "world", "programming"]
     @journal = []
   end
 

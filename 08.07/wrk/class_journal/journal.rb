@@ -25,7 +25,7 @@ class Journal
   end
 
   def save_in_file
-    File.open("Журнал", 'w') do |f|
+    File.open("journal", 'w') do |f|
       f.puts "Номер школы"
       f.puts "ФИО учителя и номер класса"
       f.puts ''
