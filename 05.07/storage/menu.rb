@@ -1,22 +1,19 @@
 module Menu
 
   MENU = {
-    1 => 'add_new_good',
-    2 => 'delete',
-    3 => 'update',
-    4 => 'total',
-    5 => 'show_all_goods',
-    6 => 'show_all_prices',
+    1 => 'add_new_item',
+    2 => 'delete_item',
+    3 => 'update_item',
+    4 => 'show_all_items',
+    5 => 'break'
+    
     }.freeze
 
     def info
       puts '1. Добавить товар'
       puts '2. Удалить товар'
       puts '3. Обновить товар'
-      puts '4. Показать сумму стоимости всех товаров'
-      puts '5. Показать все товары'
-      puts '6. Показать все цены'
-      puts '0. Выход'
+      puts '4. Показать все товары'
     end
 
     def run
@@ -31,5 +28,4 @@ module Menu
     def command(cmd)
       MENU[cmd].to_s
     end
-  end
 end
